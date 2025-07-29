@@ -43,5 +43,6 @@ const appRouter=createBrowserRouter([
   },
 
 ])
+// console.log(AppLayout);
 
 createRoot(document.getElementById('root')).render(<RouterProvider router={appRouter} />)
