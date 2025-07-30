@@ -10,7 +10,6 @@ class About extends Component{
 
     componentDidMount(){
         console.log("parent component mounted");
-        
     }
 
 

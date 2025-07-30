@@ -1,5 +1,4 @@
 import React from "react";
-
 class UserClass extends React.Component{
     constructor(props){
         super(props)
@@ -9,11 +8,8 @@ class UserClass extends React.Component{
                 name:"Dummy",
                 location:"Default"
             }
-
         }
-
                 console.log("child constructor called");
-
     }
    
     async componentDidMount(){
@@ -26,10 +22,7 @@ class UserClass extends React.Component{
         this.setState({
             userInfo:json
         })
-        
-        
     }
-
 
     render(){
         console.log("child render called");
