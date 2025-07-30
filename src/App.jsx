@@ -7,7 +7,6 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import Contact from './components/Contact'
 import Error from './components/Error'
 import RestaurantMenue from './components/RestaurantMenue'
-// import Grocery from './components/Grocery'
 import { lazy, Suspense } from 'react'
 import Shimmer from './components/Shimmer'
 
@@ -54,6 +53,5 @@ const appRouter=createBrowserRouter([
   },
 
 ])
-// console.log(AppLayout);
 
 createRoot(document.getElementById('root')).render(<RouterProvider router={appRouter} />)

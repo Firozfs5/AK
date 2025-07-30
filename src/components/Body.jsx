@@ -35,16 +35,17 @@ export const Body=()=>{
  }
 
   return (topRes==null)? <Shimmer /> : (
-    <div className="body">
-      <div className='filter'>
+    <div className=" ">
+      <div className='flex justify-between mb-2 p-3'>
 
-        <div className="search">
+        <div className="ml-8 ">
           <input 
           type="text" 
-          className="search-box" 
+          className="border-1 border-black py-1 mr-3 w-64" 
           value={searchText} 
           onChange={(e)=>setSearchText(e.target.value)}/>
-          <button
+
+          <button className="border-1 border-black rounded px-3 py-1"
           onClick={()=>{
             let searchedRes=saveRes.filter((el)=>(el.name).toLowerCase().includes(searchText.toLowerCase()))
             console.log(searchedRes);
@@ -54,16 +55,16 @@ export const Body=()=>{
           >Search</button>
         </div>
 
-        <button onClick={()=>topRated()} className="filter-btn">Top Rated Restaurant</button>
+        <button className="border-1 border-black rounded px-3 py-1" onClick={()=>topRated()} >Top Rated Restaurant</button>
       </div>
 
 
-      <div className='res-container'>
+      <div className='p-3 flex flex-wrap justify-center'>
 
           {
             
             topRes.map((el,id)=> (
-            <Link to={"/restaurants/"+el.id} key={id}>
+            <Link  to={"/restaurants/"+el.id} key={id}>
             <RestaurantCard 
               
               resName={el.name} 
@@ -77,6 +78,7 @@ export const Body=()=>{
           }
 
       </div>
+
     </div>
   )
 }

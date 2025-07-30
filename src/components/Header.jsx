@@ -8,7 +8,6 @@ const Header=()=>{
   let [logBtn,setLogBtn]=useState("Login")
 
   let onlineStatus=useOnlineStatus();
-  // console.log(onlineStatus);
   
 
   function logFun(){
@@ -16,18 +15,18 @@ const Header=()=>{
   }
 
   return (
-    <div className='header'>
-      <div id="logo-container">
-        <img className='logo' src={logo} alt="" />
+    <div className='flex justify-between border-b-1 font-normal border-black'>
+      <div>
+        <img className='w-48 ml-4' src={logo} alt="" />
       </div>
-      <div className='nav-items'>
-        <ul>
-          <li>{(onlineStatus)?'🟢':'🔴'}</li>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/about">About Us</Link></li>
-          <li><Link to="/Grocery">Grocery</Link></li>
-          <li><button className='login' onClick={()=>logFun()}>{logBtn}</button></li>
+      <div className='flex justify-center '>
+        <ul className='flex items-center'>
+          <li className='px-4 text-2xl text-center'>{(onlineStatus)?'🟢':'🔴'}</li>
+          <li className='px-4 text-2xl text-center'><Link to="/">Home</Link></li>
+          <li className='px-4 text-2xl text-center'><Link to="/contact">Contact</Link></li>
+          <li className='px-4 text-2xl text-center'><Link to="/about">About Us</Link></li>
+          <li className='px-4 text-2xl text-center'><Link to="/Grocery">Grocery</Link></li>
+          <li className='px-4 text-2xl border-black w-[100px] text-center'><button className='login' onClick={()=>logFun()}>{logBtn}</button></li>
         </ul>
       </div>
     </div>

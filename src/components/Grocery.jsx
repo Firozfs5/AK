@@ -1,7 +1,7 @@
 
 const Grocery=()=>{
     return (
-        <h3>This is grocery  section !</h3>
+        <h3 className="">This is grocery  section !</h3>
     )
 }
 
