@@ -13,7 +13,7 @@ const useRestaurantMenue=(resId)=>{
     async function fetchMenue(){
       const data=await fetch(`https://dummyjson.com/recipes/${resId}`);
       const json=await data.json();
-      console.log(json);
+      // console.log(json);
       setResInfo(json)
       
     }

@@ -2,16 +2,18 @@ import { useState } from 'react';
 import {logo} from '../utils/constant';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import { useContext } from 'react';
+import UserContext from '../utils/UserContext';
 
 const Header=()=>{
 
   let [logBtn,setLogBtn]=useState("Login")
-
   let onlineStatus=useOnlineStatus();
-  
+  let  {loggedInUser}=useContext(UserContext);
+  let [logInfo,setLogInfo]=useState(true);
 
-  function logFun(){
-    (logBtn=="Login")?setLogBtn("Logout"):setLogBtn("Login")
+  function funcLogInfo(){
+    setLogInfo(!logInfo);
   }
 
   return (
@@ -26,7 +28,11 @@ const Header=()=>{
           <li className='px-4 text-2xl text-center'><Link to="/contact">Contact</Link></li>
           <li className='px-4 text-2xl text-center'><Link to="/about">About Us</Link></li>
           <li className='px-4 text-2xl text-center'><Link to="/Grocery">Grocery</Link></li>
-          <li className='px-4 text-2xl border-black w-[100px] text-center'><button className='login' onClick={()=>logFun()}>{logBtn}</button></li>
+          <li className='px-4 text-2xl border-black  text-center'>
+            <button onClick={()=>funcLogInfo()}>{(logInfo)?`${loggedInUser}`:"Login"}</button>
+          </li>
+        
+        
         </ul>
       </div>
     </div>
