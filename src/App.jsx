@@ -10,6 +10,9 @@ import RestaurantMenue from './components/RestaurantMenue'
 import { lazy, Suspense, useState } from 'react'
 import Shimmer from './components/Shimmer'
 import UserContext from './utils/UserContext'
+import { Provider } from 'react-redux'
+import appStore from './utils/appStore'
+import Cart from './components/Cart'
 
 const Grocery=lazy(()=>import("./components/Grocery") );
 const About=lazy(()=>import("./components/About"));
@@ -17,15 +20,17 @@ const About=lazy(()=>import("./components/About"));
 const AppLayout=()=>{
 
   const [name ,setName]=useState("Firoz");
-  //  setName("hi")
    return (
 
+    <Provider store={appStore}>
     <UserContext.Provider value={{loggedInUser:name,setName}}>
     <div className='app'>
       <Header />
       <Outlet />
     </div>      
-    </UserContext.Provider>
+    </UserContext.Provider>      
+    </Provider>
+
 
    )
 }
@@ -51,7 +56,11 @@ const appRouter=createBrowserRouter([
         path:'/restaurants/:resId',
         element:<RestaurantMenue />
       },
-    {
+      {
+        path:"/cart",
+        element:<Cart />
+      },
+      {
         path:"/Grocery",
         element:<Suspense fallback={<Shimmer />} ><Grocery /></Suspense>
       }        

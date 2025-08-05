@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import { useContext } from 'react';
 import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
 
 const Header=()=>{
 
@@ -12,6 +13,10 @@ const Header=()=>{
   let  {loggedInUser}=useContext(UserContext);
   let [logInfo,setLogInfo]=useState(true);
 
+  // subscribing
+  let cartItems=useSelector((store)=>store.cart.items)
+  console.log(cartItems);
+  
   function funcLogInfo(){
     setLogInfo(!logInfo);
   }
@@ -28,6 +33,7 @@ const Header=()=>{
           <li className='px-4 text-2xl text-center'><Link to="/contact">Contact</Link></li>
           <li className='px-4 text-2xl text-center'><Link to="/about">About Us</Link></li>
           <li className='px-4 text-2xl text-center'><Link to="/Grocery">Grocery</Link></li>
+          <li className='px-4 text-2xl text-center font-2xl'><Link to="/Cart">Cart-({cartItems.length} Items)</Link></li>
           <li className='px-4 text-2xl border-black  text-center'>
             <button onClick={()=>funcLogInfo()}>{(logInfo)?`${loggedInUser}`:"Login"}</button>
           </li>

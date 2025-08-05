@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { accordian } from "../utils/constant";
 import RestaurantCategory from "./RestaurantCategory";
 import { useState } from "react";
+
 const RestaurantMenue=()=>{
 
     const {resId}=useParams()
