@@ -5,10 +5,11 @@ import useOnlineStatus from '../utils/useOnlineStatus';
 import { useContext } from 'react';
 import UserContext from '../utils/UserContext';
 import { useSelector } from 'react-redux';
+import React from 'react';
 
 const Header=()=>{
 
-  let [logBtn,setLogBtn]=useState("Login")
+  // let [logBtn,setLogBtn]=useState("Login")
   let onlineStatus=useOnlineStatus();
   let  {loggedInUser}=useContext(UserContext);
   let [logInfo,setLogInfo]=useState(true);

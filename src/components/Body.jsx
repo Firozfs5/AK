@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import React from "react";
 
 export const Body=()=>{
  
@@ -22,6 +23,7 @@ export const Body=()=>{
     let rawData=await fetch('https://dummyjson.com/recipes');
     let data=await rawData.json();
     setSaveRes(data.recipes);
+    // console.log(data.recipes)
     setTopRes(data.recipes);
   }
 
@@ -37,12 +39,13 @@ export const Body=()=>{
  }
 
   return (topRes==null)? <Shimmer /> : (
-    <div className=" ">
+    <div className=" " data-testid="bodyCard">
       <div className='flex justify-between mb-2 p-3'>
 
         <div className="ml-8 ">
           <input 
           type="text" 
+          data-testid="searchBar"
           className="border-1 border-black py-1 mr-3 w-64 p-1" 
           value={searchText} 
           onChange={(e)=>setSearchText(e.target.value)}/>
@@ -59,7 +62,9 @@ export const Body=()=>{
 
         <div>
           <input type="text" className="border border-black w-48 h-8 rounded p-1 mr-3" placeholder="User Name" value={loggedInUser} onChange={(e)=>setName(e.target.value)} />
-          <button className="border-1 border-black rounded px-3 py-1 hover:bg-black font-semibold hover:text-white" onClick={()=>topRated()} >Top Rated Restaurant</button>
+          <button 
+          className={(topResClicked)?"border-1 border-black rounded px-3 py-1 bg-black font-semibold text-white ":"border-1 border-black rounded px-3 py-1 hover:bg-black font-semibold hover:text-white "} 
+          onClick={()=>topRated()} >Top Rated Restaurant</button>
  
         </div>
 
@@ -72,7 +77,7 @@ export const Body=()=>{
             
             topRes.map((el,id)=> (
             <Link  to={"/restaurants/"+el.id} key={id}>
-
+                {console.log(el)}
               {
                 (el.difficulty=='Easy')?
                 (<RestaurantCardPromotes resName={el.name} img={el.image} cuisine={el.cuisine} rating={el.rating} />): 

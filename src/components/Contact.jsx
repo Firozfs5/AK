@@ -1,12 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const Contact = () => {
-  return (
-    <div>
-      <h1>Contact </h1>
-      <h2>This is the contact page</h2>
-    </div>
-  )
-}
+const Contact = () => (
+  <div>
+    <h1>Contact Page</h1>
+    <input type="text" name="" placeholder="name" id="" />
+    <button>Submit</button>
+  </div>
+);
 
-export default Contact
+export default Contact;
