@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../utils/cartSlice";
+import { clearCart, removeItem } from "../utils/cartSlice";
 const Cart=()=>{
 
     let cart=useSelector((store)=>store.cart.items);
@@ -9,6 +9,10 @@ const Cart=()=>{
 
     function handleClearBtn(){
         dispatch(clearCart())
+    }
+
+    function handleRemoveBtn(idx){
+        dispatch(removeItem(idx))
     }
     
 
@@ -31,7 +35,7 @@ const Cart=()=>{
                             <p>{itm.details}</p>
                             <button 
                             className="font-medium border-2 mt-2 border-black p-1 rounded-xl hover:text-white hover:bg-black"
-                            onClick={()=>handleAddBtn(itm)}
+                            onClick={()=>handleRemoveBtn(idx)}
                             >Remove ➖</button>
                         </div>
                     )
